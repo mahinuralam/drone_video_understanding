@@ -1,0 +1,17 @@
+# Python 3.11, CUDA 12.8 (tested on RTX 5090, driver 615.71). The +cu128 torch wheels come from the PyTorch index below.
+--extra-index-url https://download.pytorch.org/whl/cu128
+torch==2.11.0+cu128
+torchvision==0.26.0+cu128
+triton==3.6.0
+transformers==5.17.0
+tokenizers==0.23.2
+safetensors==0.8.0
+peft==0.20.0
+accelerate==1.14.0
+flash-linear-attention==0.5.2
+fla-core==0.5.2
+einops==0.8.2
+av==18.1.0
+numpy==2.4.6
+pillow==12.3.0
+huggingface_hub==1.32.0

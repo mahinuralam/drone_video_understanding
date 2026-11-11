@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 370" width="1280" height="370" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/>
+    </marker>
+  </defs>
+  <rect x="0.5" y="0.5" width="1279" height="369" rx="16" fill="#ffffff" stroke="#e5e7eb"/>
+
+  <!-- row labels -->
+  <text x="30" y="34" font-size="12" font-weight="700" fill="#6b7280" letter-spacing="1.5">TRAINING</text>
+  <text x="30" y="196" font-size="12" font-weight="700" fill="#6b7280" letter-spacing="1.5">INFERENCE</text>
+
+  <!-- training box -->
+  <rect x="30" y="48" width="1220" height="96" rx="10" fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5"/>
+  <text x="50" y="76" font-size="16" font-weight="700" fill="#111827">LoRA fine-tuning of Qwen3.5-9B: 7 members (different seeds, training splits and prompt formats)</text>
+  <text x="50" y="102" font-size="14" fill="#374151">Each training sequence = one video + 1–6 of its questions · options re-shuffled every epoch · loss on the answer letter only</text>
+  <text x="50" y="126" font-size="14" fill="#374151">"Format B" members also get the video's other training Q&amp;As (with answers) in the prompt as known facts</text>
+  <line x1="346" y1="144" x2="346" y2="208" stroke="#6b7280" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="356" y="182" font-size="13" fill="#6b7280">adapters</text>
+
+  <!-- 1 video -->
+  <rect x="30" y="210" width="184" height="124" rx="10" fill="#f3f4f6" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="122" y="240" font-size="16" font-weight="700" fill="#111827" text-anchor="middle">Drone video</text>
+  <rect x="62" y="252" width="34" height="22" rx="3" fill="#d1d5db" stroke="#6b7280"/>
+  <rect x="70" y="257" width="34" height="22" rx="3" fill="#d1d5db" stroke="#6b7280"/>
+  <rect x="78" y="262" width="34" height="22" rx="3" fill="#e5e7eb" stroke="#6b7280"/>
+  <text x="122" y="278" font-size="13" fill="#4b5563">… × 32</text>
+  <text x="122" y="306" font-size="13" fill="#4b5563" text-anchor="middle">frames with timestamps,</text>
+  <text x="122" y="323" font-size="13" fill="#4b5563" text-anchor="middle">3 frame-offset grids</text>
+  <line x1="214" y1="272" x2="252" y2="272" stroke="#6b7280" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- 2 model -->
+  <rect x="254" y="210" width="184" height="124" rx="10" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="346" y="240" font-size="16" font-weight="700" fill="#111827" text-anchor="middle">Qwen3.5-9B + LoRA</text>
+  <text x="346" y="266" font-size="13" fill="#374151" text-anchor="middle">video + question +</text>
+  <text x="346" y="283" font-size="13" fill="#374151" text-anchor="middle">4 options, then "Answer:"</text>
+  <text x="346" y="306" font-size="13" fill="#374151" text-anchor="middle">7 adapters × 3 grids</text>
+  <text x="346" y="323" font-size="13" fill="#374151" text-anchor="middle">no text generation</text>
+  <line x1="438" y1="272" x2="476" y2="272" stroke="#6b7280" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- 3 probabilities -->
+  <rect x="478" y="210" width="184" height="124" rx="10" fill="#f3f4f6" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="570" y="240" font-size="16" font-weight="700" fill="#111827" text-anchor="middle">Letter probabilities</text>
+  <text x="508" y="262" font-size="12" fill="#4b5563">A</text><rect x="522" y="253" width="6" height="10" fill="#9ca3af"/>
+  <text x="508" y="278" font-size="12" fill="#4b5563">B</text><rect x="522" y="269" width="10" height="10" fill="#9ca3af"/>
+  <text x="508" y="294" font-size="12" fill="#4b5563">C</text><rect x="522" y="285" width="104" height="10" fill="#3b82f6"/>
+  <text x="508" y="310" font-size="12" fill="#4b5563">D</text><rect x="522" y="301" width="8" height="10" fill="#9ca3af"/>
+  <text x="570" y="324" font-size="11" fill="#6b7280" text-anchor="middle">softmax over A/B/C/D logits</text>
+  <line x1="662" y1="272" x2="700" y2="272" stroke="#6b7280" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- 4 ensemble -->
+  <rect x="702" y="210" width="184" height="124" rx="10" fill="#f3f4f6" stroke="#9ca3af" stroke-width="1.5"/>
+  <text x="794" y="240" font-size="16" font-weight="700" fill="#111827" text-anchor="middle">Ensemble</text>
+  <text x="794" y="266" font-size="13" fill="#4b5563" text-anchor="middle">average over 3 grids,</text>
+  <text x="794" y="283" font-size="13" fill="#4b5563" text-anchor="middle">then over 6 members</text>
+  <text x="794" y="306" font-size="13" fill="#4b5563" text-anchor="middle">(equal weights)</text>
+  <line x1="886" y1="272" x2="924" y2="272" stroke="#6b7280" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- 5 duplicate rule -->
+  <rect x="926" y="210" width="184" height="124" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
+  <text x="1018" y="240" font-size="16" font-weight="700" fill="#111827" text-anchor="middle">Duplicate rule</text>
+  <text x="1018" y="266" font-size="13" fill="#4b5563" text-anchor="middle">same or near-identical</text>
+  <text x="1018" y="283" font-size="13" fill="#4b5563" text-anchor="middle">question in training</text>
+  <text x="1018" y="300" font-size="13" fill="#4b5563" text-anchor="middle">for this video? Then use</text>
+  <text x="1018" y="317" font-size="13" fill="#4b5563" text-anchor="middle">the 4 Format B members</text>
+  <line x1="1110" y1="272" x2="1148" y2="272" stroke="#6b7280" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- answer -->
+  <rect x="1150" y="242" width="100" height="60" rx="30" fill="#dcfce7" stroke="#16a34a" stroke-width="1.5"/>
+  <text x="1200" y="268" font-size="15" font-weight="700" fill="#111827" text-anchor="middle">Answer</text>
+  <text x="1200" y="287" font-size="13" fill="#166534" text-anchor="middle">argmax</text>
+</svg>

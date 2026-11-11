@@ -1,0 +1,21 @@
+# data, caches and outputs (all rebuilt by the scripts)
+data/
+frames*/
+splits/
+results/
+logs/
+ckpt/
+weights/
+logs_make_dev.txt
+*.jsonl
+
+# submissions (they contain the test questions) and downloaded adapter archives
+*.zip
+*.predictions.json
+*.tar
+
+# python
+__pycache__/
+*.pyc
+venv/
+.venv/
