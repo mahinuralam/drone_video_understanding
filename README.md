@@ -2,7 +2,7 @@
 
 This project answers multiple-choice questions about drone videos with a fine-tuned Qwen3.5-9B. It was built for the
 **ReVA Drone Video Understanding Challenge** (MAVU @ WACV 2027), where it scores **0.8775 accuracy on the 4,000-question
-test set**. It uses open-weight models only.
+test set** securing 6th position. 
 
 ![Pipeline](assets/pipeline.svg)
 
@@ -64,7 +64,7 @@ Answer:<|im_end|>
 
 ## Quick start
 
-You need one 32 GB GPU and about 30 GB of disk. On an RTX 5090, prediction takes about 5.5 h and training about 70 h.
+Need one 32 GB GPU and about 30 GB of disk. On an RTX 5090, prediction takes about 5.5 h and training about 70 h.
 
 ```bash
 python3.11 -m venv .venv && source .venv/bin/activate
@@ -82,7 +82,7 @@ for m in final_9b_formatB final_9b_plain run1_9b run5_9b_formatB s13_9b_plain s1
 done
 ```
 
-To train the adapters yourself instead, run `./train.sh`, then `WEIGHTS=ckpt ./predict.sh`. Retrained adapters will not be
+To train the adapters instead, run `./train.sh`, then `WEIGHTS=ckpt ./predict.sh`. Retrained adapters will not be
 bit-identical to the released ones. The released `run1_9b` was also trained with an earlier `train.py` that took one
 fewer optimizer step (3,623 instead of 3,624).
 
